@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-<h1>Welcome to Hello world!!!</h1>
+    <h1>Welcome to Hello world!!!</h1>
+    <p th:text="'경로명 : ' + ${pathName}"></p>
+    <p th:text="'이름 : ' + ${data}"></p>
 </body>
 </html>
