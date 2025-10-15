@@ -41,4 +41,12 @@ public class MemberController {
         model.addAttribute("member", member);
         return "signupResult";
     }
+    @GetMapping("/restLogin")
+    public String restLogin(){
+        return "restLogin"; //view Name
+    }
+    @GetMapping("/restSignup")
+    public String restSignup(){
+        return "restSignup"; //view Name
+    }
 }

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        async function handleSubmit(){
+            const id = document.getElementById("id").value;
+            const pass = document.getElementById("pass").value;
+            const name = document.getElementById("name").value;
+            const address = document.getElementById("address").value;
+            const formData = {"id":id, "pass":pass, "name":name, "address":address};
+
+            const response = await fetch("http://localhost:8080/restSignup",{
+                method : "POST",
+                headers : {"Content-Type": "application/json"},
+                body : JSON.stringify(formData)
+            });
+
+            if(response.ok){
+                // Spring 서버가 Member 객체를 바로 반환한다고 가정
+                const member = await response.json();
+                const output = `
+                    <h4>가입 성공!</h4>
+                    <ul>
+                        <li>아이디 : ${member.id}</li>
+                        <li>패스워드 : ${member.pass}</li>
+                        <li>이름 : ${member.name}</li>
+                        <li>주소 : ${member.address}</li>
+                    </ul>
+                `;
+                document.getElementById("result").innerHTML = output;
+            } else {
+                document.getElementById("result").innerHTML =
+                    `<p>오류가 발생했습니다. (상태 코드: ${response.status})</p>`;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>signup(Rest) 화면</h1>
+        <ul>
+            <li>
+                <label>아이디</label>
+                <input type="text" id="id">
+            </li>
+            <li>
+                <label>패스워드</label>
+                <input type="password" id="pass">
+            </li>
+            <li>
+                <label>이름</label>
+                <input type="text" id="name">
+            </li>
+            <li>
+                <label>주소</label>
+                <input type="text" id="address">
+            </li>
+            <li>
+                <button type="button" onclick="handleSubmit()">Signup</button>
+                <button type="reset">Reset</button>
+            </li>
+        </ul>
+    <hr>
+    <div id="result"></div>
+    <a href="/">홈으로</a>
+</body>
+</html>

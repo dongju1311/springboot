@@ -32,5 +32,12 @@ public class DeployController {
         model.addAttribute("member", member);
         return "signupResult";
     }
-
+    @GetMapping("/restLogin")
+    public String restLogin(){
+        return "restLogin";
+    }
+    @GetMapping("/restSignup")
+    public String restSignup(){
+        return "restSignup";
+    }
 }

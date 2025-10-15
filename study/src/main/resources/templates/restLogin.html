@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        async function handleSubmit(){
+            //1. id, pass 값 가져온 후 JSON 객체 생성
+            const id = document.getElementById("id").value;
+            const pass = document.getElementById("pass").value;
+            const formData = {"id": id, "pass": pass};
+            console.log(id,pass,formData);
+            //2. PostMapping으로 MemberRestController에 JSON 객체 전송
+            // --> await fetch 함수 요청(request) 및 응답(response) 생성
+            const response = await fetch("http://localhost:8080/restLogin", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(formData)
+            });
+            console.log(response);
+            //3. 응답 객체를 통한 결과 출력
+            if(response.ok){
+
+                const {result, member} = await response.json();
+                console.log(result, member);
+                if(result) {
+                    alert("로그인 성공");
+                    const output = `
+                        <ul>
+                            <li>아이디 : ${member.id}<li/>
+                            <li>패스워드 : ${member.pass}<li/>
+                        <ul/>
+                    `;
+                    document.getElementById("result").innerHTML = output;
+                }
+                else {
+                    document.getElementById("result").remove();
+                    alert("로그인 실패");
+                    }
+
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Login(Rest) 화면</h1>
+        <ul>
+            <li>
+                <label>아이디</label>
+                <input type="text" id="id">
+            </li>
+            <li>
+                <label>패스워드</label>
+                <input type="password" id="pass">
+            </li>
+            <li>
+                <button type="button" onclick="handleSubmit()">Login</button>
+                <button type="reset">Reset</button>
+            </li>
+        </ul>
+    <hr>
+    <div id="result"></div>
+    <a href="/">홈으로</a>
+</body>
+</html>
