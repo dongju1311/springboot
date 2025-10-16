@@ -1,0 +1,57 @@
+[
+    {   "qid": "1",
+        "isComplete": true,
+        "title": "사이즈문의",
+        "content": "자켓 사이즈 문의 드립니다.",
+        "isLock": false,
+        "id": "so*********",
+        "cdate": "2025. 09. 22"
+    },
+    {
+        "qid": "2",
+        "isComplete": true,
+        "title": "반품문의",
+        "content": "자켓 사이즈 반품 문의 드립니다.",
+        "isLock": true,
+        "id": "so*********",
+        "cdate": "2025. 09. 22"
+    },
+    {
+        "qid": "3",
+        "isComplete": false,
+        "title": "사이즈문의",
+        "content": "자켓 사이즈 문의 드립니다.",
+        "isLock": false,
+        "id": "so*********",
+        "cdate": "2025. 09. 22"
+    },
+    {
+        "qid": "4",
+        "isComplete": true,
+        "title": "사이즈문의",
+        "content": "자켓 사이즈 문의 드립니다.",
+        "isLock": false,
+        "id": "so*********",
+        "cdate": "2025. 09. 22"
+    },
+    {
+        "qid": "5",
+        "isComplete": false,
+        "title": "사이즈문의",
+        "content": "자켓 사이즈 문의 드립니다.",
+        "isLock": false,
+        "id": "so*********",
+        "cdate": "2025. 09. 22"
+    },
+    {
+        "qid": "6",
+        "isComplete": true,
+        "title": "사이즈문의",
+        "content": "자켓 사이즈 문의 드립니다.",
+        "isLock": false,
+        "id": "so*********",
+        "cdate": "2025. 09. 22"
+    }    
+]
+
+
