@@ -1,9 +1,33 @@
 import { login, logout } from '../../feature/auth/authSlice.js';
-import { validateFormCheck } from '../../utils/validate.js';
+import { validateFormCheck, validateSignupFormCheck } from '../../utils/validate.js';
 import { axiosPost } from '../../utils/dataFetch.js';
 
+/**
+    ID 중복 체크
+*/
+export const getIdCheck = (id) => async(dispatch) => {
+    const data = { "id": id };
+    const url = "/member/idcheck";
+    const result = await axiosPost(url, data);
+    return result;
+}
+
+/**
+    Signup
+*/
+export const getSignup = (formData,param) => async(dispatch) => {
+    let result = null;
+    if(validateSignupFormCheck(param)){
+        const url = "/member/signup";
+        result = await axiosPost(url, formData);
+    }
+    return result;
+}
 
 
+/**
+    Login
+*/
 export const getLogin = (formData, param) => async(dispatch) => {
 
     if(validateFormCheck(param)) {
@@ -11,7 +35,7 @@ export const getLogin = (formData, param) => async(dispatch) => {
             SpringBoot - @RestController, @PostMapping("/member/login")
             axios api
         */
-        const url = "http://localhost:8080/member/login";
+        const url = "/member/login";
         const result = await axiosPost(url, formData);
         if(result) {
             dispatch(login({"userId":formData.id}));   
