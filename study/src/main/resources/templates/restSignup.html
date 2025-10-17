@@ -11,14 +11,13 @@
             const address = document.getElementById("address").value;
             const formData = {"id":id, "pass":pass, "name":name, "address":address};
 
-            const response = await fetch("http://localhost:8080/restSignup",{
+            const response = await fetch("http://localhost:8080/member/restSignup",{
                 method : "POST",
                 headers : {"Content-Type": "application/json"},
                 body : JSON.stringify(formData)
             });
 
             if(response.ok){
-                // Spring 서버가 Member 객체를 바로 반환한다고 가정
                 const member = await response.json();
                 const output = `
                     <h4>가입 성공!</h4>

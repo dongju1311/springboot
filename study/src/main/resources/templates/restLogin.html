@@ -12,7 +12,7 @@
             console.log(id,pass,formData);
             //2. PostMapping으로 MemberRestController에 JSON 객체 전송
             // --> await fetch 함수 요청(request) 및 응답(response) 생성
-            const response = await fetch("http://localhost:8080/restLogin", {
+            const response = await fetch("http://localhost:8080/member/restLogin", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(formData)
