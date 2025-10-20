@@ -7,5 +7,5 @@ public interface MemberRepository {
 
     Long findById(String id);
 
-    Long findLogin(Member member);
+    String login(String id);
 }

@@ -7,5 +7,5 @@ public interface MemberService {
 
     boolean idCheck(String id);
 
-    boolean loginCheck(Member member);
+    boolean login(Member member);
 }

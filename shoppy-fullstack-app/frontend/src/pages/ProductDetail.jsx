@@ -15,7 +15,8 @@ export function ProductDetail() {
     const {pid} = useParams();
     const dispatch = useDispatch();
     const product = useSelector((state) => state.product.product );
-    const imgList = useSelector((state) => state.product.product.imgList);
+    const imgList = useSelector((state) => state.product.imgList);
+
 
     const [size, setSize] = useState('XS');  
     const [tabName, setTabName] = useState('detail');
@@ -24,13 +25,13 @@ export function ProductDetail() {
     
     useEffect(()=> {
         dispatch(getProduct(pid));
-    }, []);
+    }, [dispatch,pid]);
 
     return (
         <div className="content">
             <div className='product-detail-top'>
                 <div className='product-detail-image-top'>
-                    <img src={product.image} />
+                    <img src={product.image && `/images/${product.image}`} />
                     <ImageList  className="product-detail-image-top-list"
                                 imgList={imgList}/>
                 </div>

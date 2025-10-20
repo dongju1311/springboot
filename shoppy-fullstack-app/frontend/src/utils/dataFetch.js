@@ -40,6 +40,10 @@ export const axiosData = async (url) => {
     const response = await axios.get(url);
     return response.data;
 }
+export const axiosGet = async(url) => {
+    const response = await axios.get(url);
+    return response.data;
+}
 
 /**
  * fetch 함수를 이용하여 데이터 가져오기
