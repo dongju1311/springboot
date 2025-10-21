@@ -1,15 +1,27 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { ImageList } from '../commons/ImageList.jsx';
+import {getDetailinfo} from "../../feature/product/productAPI.js";
 
 /**
  * ProductDetail > Detail  
  */
-export function Detail({imgList, info}) {
-    
+export function Detail({imgList,pid}) {
+    const [info, setInfo] = useState({});
+    useEffect( () => {
+        const loadData = async (pid) => {
+            const jsonData = await getDetailinfo(pid);
+
+            setInfo(jsonData);
+        }
+        loadData(pid);
+    }, []);
+
+    // console.log(info);
+
     return (
         <div>
             <DetailImages imgList={imgList} />
-            <DetailInfo info={info} />
+            <DetailInfo info={info}/>
         </div>
     );
 }
@@ -33,12 +45,13 @@ export function DetailImages({imgList}) {
  * ProductDetail > Detail > DetailInfo
  */
 export function DetailInfo({info}) {
-    
+
+
     return (
         <div className='detail-info'>
             <h4 className='detail-info-title-top'>
-                {info && info.title_en} / {info && info.title_ko}
-                {info && info.list.map(item => 
+                {info && info.titleEn} / {info && info.titleKo}
+                {info.list && info.list.map(item =>
                     <div>
                         <h5 className='detail-info-title'>[{item.title}]</h5>
                         {item.title === "SIZE" || item.title === "MODEL SIZE" ?
