@@ -37,4 +37,13 @@ export const getQna = async (pid) => {
     const qna = await axiosPost(url,{"pid":pid});
     return qna;
 }
+/**
+ * 상품 Return
+ */
+export const getReturn = async () => {
+    const url = "/product/return";
+    const returnData = await axiosGet(url);
+    const list = JSON.parse(returnData.list);
+    return {...returnData, list: list};
+}
 

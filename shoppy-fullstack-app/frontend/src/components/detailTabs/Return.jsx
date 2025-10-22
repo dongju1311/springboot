@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { axiosData } from '../../utils/dataFetch.js';
+import { getReturn } from '../../feature/product/productAPI.js';
 
 export function Return() {
     const [returnData, setReturnData] = useState({});
     useEffect(()=> {
         const fetch = async() => {
-            const jsonData = await axiosData("/data/productReturn.json");
+            const jsonData = await getReturn();
             setReturnData(jsonData);
         }
         fetch();
     }, [])
-
-    // console.log(returnData);
-    
 
     return (
         <div>
@@ -21,20 +18,20 @@ export function Return() {
             <p style={{paddingBottom:"20px"}}>{returnData && returnData.description}</p>
             <table className='review-list-content'>
                 <tbody>
-                    {returnData.list && returnData.list.map(item => 
-                        <tr>
-                            <td style={{width:"30%", textAlign:"center"}}>{item.title}</td>
-                            <td>
-                                <ul  style={{textAlign:"left"}}>
-                                {item.infoList 
+                {returnData.list && returnData.list.map(item =>
+                    <tr>
+                        <td style={{width:"30%", textAlign:"center"}}>{item.title}</td>
+                        <td>
+                            <ul  style={{textAlign:"left"}}>
+                                {item.infoList
                                     && item.infoList .map(item =>
                                         <li>{item}</li>
                                     )}
-                                </ul>
-                            </td>
-                        </tr>
-                    ) }
-                    <tr><td colSpan={2}></td></tr>
+                            </ul>
+                        </td>
+                    </tr>
+                ) }
+                <tr><td colSpan={2}></td></tr>
                 </tbody>
             </table>
         </div>

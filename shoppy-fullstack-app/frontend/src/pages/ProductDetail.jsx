@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import { PiGiftThin } from 'react-icons/pi';
 import { ImageList } from '../components/commons/ImageList.jsx';
 import { StarRating } from '../components/commons/StarRating.jsx';
@@ -9,13 +9,15 @@ import { QnA } from '../components/detailTabs/QnA.jsx';
 import { Return } from '../components/detailTabs/Return.jsx';
 import { useDispatch, useSelector } from 'react-redux';
 import { addCart } from '../feature/cart/cartAPI.js';
-import { getProduct, getProductList } from '../feature/product/productAPI.js';
+import { getProduct } from '../feature/product/productAPI.js';
 
 export function ProductDetail() {
     const {pid} = useParams();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
-    const product = useSelector((state) => state.product.product );
+    const product = useSelector((state) => state.product.product);
     const imgList = useSelector((state) => state.product.imgList);
+    const isLogin = useSelector((state) => state.auth.isLogin);
 
 
     const [size, setSize] = useState('XS');  
@@ -69,7 +71,9 @@ export function ProductDetail() {
                                 className="product-detail-button order">바로 구매</button>
                         <button type="button"
                                 className="product-detail-button cart"
-                                onClick={()=>{dispatch(addCart(product.pid, size))}}
+                                onClick={()=>{
+                                    isLogin ? dispatch(addCart(product.pid, size))
+                                    : navigate("/login")}}
                                 > 쇼핑백 담기</button>
                         <div type="button" className="gift">
                             <PiGiftThin />

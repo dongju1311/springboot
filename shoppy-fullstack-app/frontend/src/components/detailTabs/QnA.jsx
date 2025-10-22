@@ -13,7 +13,7 @@ export function QnA({pid}) {
         }
         fetch(pid);
     }, []);
-    console.log(qnaData);
+    // console.log(qnaData);
    const handleToggle = (qid) => {
         setOpenQid(prev => (prev === qid) ? null : qid);
    }
