@@ -4,23 +4,49 @@ import { addCartItem, updateCartCount,
     updateCartItem, removeCartItem } from './cartSlice.js';
 import { axiosData, axiosPost } from '../../utils/dataFetch.js';
 
+/** 회원별 장바구니 카운트*/
+export const getCartCount = (id) => async (dispatch) =>{
+    const url = "/cart/count";
+    const data = {"id":id};
+    const jsonData = await axiosPost(url,data);
+    dispatch(updateCartCount({"count":jsonData.sumQty}));
+    // console.log(jsonData);
+    // return jsonData.sumQty;
+}
+
 export const removeCart = (cid) => async(dispatch) => {
-    dispatch(removeCartItem({"cid": cid}));
-    dispatch(updateTotalPrice());
-    dispatch(updateCartCount());
+    const url = "/cart/deleteItem";
+    const data = {"cid":cid};
+    const rows = await axiosPost(url, data);
+    const {userId} = JSON.parse(localStorage.getItem("loginInfo"));
+    dispatch(getCartCount(userId));
+    dispatch(showCart());
+
+    // dispatch(removeCartItem({"cid": cid}));
+    // dispatch(updateTotalPrice());
+    // dispatch(updateCartCount());
 }
 
 export const showCart = () => async (dispatch) => {
-    const jsonData = await axiosData("/data/products.json");
-    dispatch(showCartItem({"items": jsonData}));
-    dispatch(updateTotalPrice());
+    // const jsonData = await axiosData("/data/products.json");
+    const url = "/cart/list";
+    const {userId} = JSON.parse(localStorage.getItem("loginInfo"));
+    const jsonData = await axiosPost(url,{"id":userId});
+    dispatch(showCartItem({"items":jsonData}));
+    dispatch(updateTotalPrice({"totalPrice":jsonData[0].totalPrice}));
+    // console.log(jsonData);
+    // dispatch(showCartItem({"items": jsonData}));
 }
 
-export const updateCart = async(cid, type) =>  {
+export const updateCart = (cid, type) => async (dispatch)=> {
     const url = "/cart/updateQty";
     const data = {"cid": cid, "type": type};
     const rows = await axiosPost(url, data);
-    console.log('updateCart rows => ', rows);
+    // dispatch(updateCartCount({"count":1, "type":type}));
+    const {userId} = JSON.parse(localStorage.getItem("loginInfo"));
+    dispatch(getCartCount(userId));
+    dispatch(showCart());
+    // console.log('updateCart rows => ', rows);
     return rows;
 //    dispatch(updateCartItem({"cid":cid, "type":type})); //수량변경
 //    dispatch(updateTotalPrice());
@@ -44,12 +70,13 @@ export const addCart = (pid, size) => async (dispatch) => {
         const item = {"pid":pid, "size":size, "qty":1, "id": userId};
         const rows = await axiosPost(url, item);
         alert("상품이 추가되었습니다");
-        dispatch(updateCartCount());
+        // dispatch(updateCartCount({"count":1, "type": true}));
     } else {
         const rows = await updateCart(checkResult.cid, "+");
+        // dispatch(updateCartCount({"count":1, "type": false}));
         alert("상품이 추가되었습니다");
     }
-
+    dispatch(getCartCount(userId));
     return 1;
 
 //    dispatch(addCartItem({"cartItem":{"pid":pid, "size":size, "qty":1}}));
