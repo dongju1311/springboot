@@ -33,7 +33,7 @@ export const showCart = () => async (dispatch) => {
     const {userId} = JSON.parse(localStorage.getItem("loginInfo"));
     const jsonData = await axiosPost(url,{"id":userId});
     dispatch(showCartItem({"items":jsonData}));
-    dispatch(updateTotalPrice({"totalPrice":jsonData[0].totalPrice}));
+    jsonData.length && dispatch(updateTotalPrice({"totalPrice":jsonData[0].totalPrice}));
     // console.log(jsonData);
     // dispatch(showCartItem({"items": jsonData}));
 }

@@ -258,4 +258,27 @@ select sum(c.qty*p.price) as total
 from cart c 
 inner join product p
 on c.pid = p.pid
-where c.id = 'test';   
+where c.id = 'test';
+
+-- 장바구니 리스트 view 생성
+show tables from information_schema;
+select * from information_schema.views where table_schema = 'shoppy';
+
+create view view_cartlist
+as select
+       m.id,
+       m.name as mname,
+       m.phone,
+       m.email,
+       p.pid,
+       p.info,
+       p.name,
+       p.image,
+       p.price,
+       c.cid,
+       c.size,
+       c.qty
+   from member m, product p, cart c
+   where m.id = c.id
+     and p.pid = c.pid
+     and m.id = ?

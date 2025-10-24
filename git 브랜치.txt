@@ -1,0 +1,7 @@
+공용 레파지토리 : teamRepository
+- 공통 파일 액세스 : README.md
+
+팀원 들은 teamRepository -> clone
+1. 홍길동 - readme.md : 홍길동  - add > commit > push
+2. 홍길순 - readme.md : 홍길순 - git pull
+****** 형상 관리 툴 ********

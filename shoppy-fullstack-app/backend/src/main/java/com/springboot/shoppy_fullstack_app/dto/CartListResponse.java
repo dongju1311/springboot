@@ -13,4 +13,9 @@ public class CartListResponse {
     private String size;
     private int qty;
     private int totalPrice;
+    private String info;
+    private String mname;
+    private String phone;
+    private String email;
+
 }
