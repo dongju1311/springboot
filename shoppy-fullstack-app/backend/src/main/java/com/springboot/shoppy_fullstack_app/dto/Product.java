@@ -2,6 +2,8 @@ package com.springboot.shoppy_fullstack_app.dto;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class Product {
     private int pid;
@@ -12,3 +14,4 @@ public class Product {
     private String image;
     private String imgList;
 }
+

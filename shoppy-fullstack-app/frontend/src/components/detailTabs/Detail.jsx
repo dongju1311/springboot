@@ -1,27 +1,24 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { ImageList } from '../commons/ImageList.jsx';
-import {getDetailinfo} from "../../feature/product/productAPI.js";
+import { getDetailinfo } from '../../feature/product/productAPI.js';
 
 /**
  * ProductDetail > Detail  
  */
-export function Detail({imgList,pid}) {
+export function Detail({imgList, pid}) {
     const [info, setInfo] = useState({});
-    useEffect( () => {
-        const loadData = async (pid) => {
+    useEffect(() => {
+        const loadData = async(pid) => {
             const jsonData = await getDetailinfo(pid);
-
             setInfo(jsonData);
         }
         loadData(pid);
     }, []);
 
-    // console.log(info);
-
     return (
         <div>
             <DetailImages imgList={imgList} />
-            <DetailInfo info={info}/>
+            <DetailInfo info={info} />
         </div>
     );
 }
@@ -45,8 +42,6 @@ export function DetailImages({imgList}) {
  * ProductDetail > Detail > DetailInfo
  */
 export function DetailInfo({info}) {
-
-
     return (
         <div className='detail-info'>
             <h4 className='detail-info-title-top'>
@@ -57,7 +52,7 @@ export function DetailInfo({info}) {
                         {item.title === "SIZE" || item.title === "MODEL SIZE" ?
                             <ul className='nolist'>
                                 <li>{item.type}</li>
-                                { item.title==="MODEL SIZE" && 
+                                { item.title==="MODEL SIZE" &&
                                     <>
                                     <li>{item.height}</li>
                                     <li>{item.size}</li>
@@ -77,7 +72,7 @@ export function DetailInfo({info}) {
                             </ul>
                          :
                             <ul className='list nolist'>
-                                {item.title === "FABRIC" && 
+                                {item.title === "FABRIC" &&
                                     <>
                                     <li>Color: {item.color}</li>
                                     <li>{item.material}</li>

@@ -30,7 +30,7 @@ export function Login() {
             errors: errors
         }
        
-        const succ = await dispatch(getLogin(formData, param));  // 비동기식 처리 후 isLogin 변경
+        const succ = await dispatch(getLogin(formData, param));
 
         if(succ) {
             alert("로그인에 성공하셨습니다.");

@@ -16,35 +16,32 @@ public class ProductController {
     private ProductService productService;
 
     @Autowired
-    public ProductController(ProductService productService){
+    public ProductController(ProductService productService) {
         this.productService = productService;
     }
 
-    @GetMapping("/all")
-    public List<Product> all(){
-//        System.out.println("product all");
-        return productService.findAll();
-
-    }
-
-    @PostMapping("/pid")
-    public Product pid(@RequestBody Product product){
-        return productService.findByPid(product.getPid());
-    }
-
-    @PostMapping("/detailinfo")
-    public ProductDetailinfo detailinfo(@RequestBody Product product){
-        System.out.println(product.getPid());
-        return productService.findDetailinfo(product.getPid());
+    @GetMapping("/return")
+    public ProductReturn getReturn() {
+        return productService.findReturn();
     }
 
     @PostMapping("/qna")
-    public List<ProductQna> qna(@RequestBody Product product){
+    public List<ProductQna> qna(@RequestBody Product product) {
         return productService.findQna(product.getPid());
     }
 
-    @GetMapping("/return")
-    public ProductReturn getReturn(){
-        return productService.findReturn();
+    @PostMapping("/detailinfo")
+    public ProductDetailinfo detailinfo(@RequestBody Product product) {
+        return productService.findDetailinfo(product.getPid());
+    }
+
+    @PostMapping("/pid")
+    public Product pid(@RequestBody Product product) {
+        return productService.findByPid(product.getPid());
+    }
+
+    @GetMapping("/all")
+    public List<Product> all() {
+        return productService.findAll();
     }
 }

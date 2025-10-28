@@ -2,7 +2,6 @@ package com.springboot.shoppy_fullstack_app.dto;
 
 import lombok.Data;
 
-
 @Data
 public class ProductDetailinfo {
     private int did;

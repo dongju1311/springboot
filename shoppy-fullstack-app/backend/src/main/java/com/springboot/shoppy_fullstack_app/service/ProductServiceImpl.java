@@ -7,29 +7,25 @@ import com.springboot.shoppy_fullstack_app.dto.ProductReturn;
 import com.springboot.shoppy_fullstack_app.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
 //@Transactional
 public class ProductServiceImpl implements ProductService {
-
     private ProductRepository productRepository;
 
     @Autowired
-    public ProductServiceImpl(ProductRepository productRepository){
+    public ProductServiceImpl(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
 
     @Override
-    public List<Product> findAll() {
-        List<Product> list = productRepository.findAll();
-        return list;
-    }
+    public ProductReturn findReturn() { return productRepository.findReturn(); }
 
     @Override
-    public Product findByPid(int pid){
-        return productRepository.findByPid(pid);
+    public List<ProductQna> findQna(int pid) {
+        return productRepository.findQna(pid);
     }
 
     @Override
@@ -38,14 +34,13 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<ProductQna> findQna(int pid){
-        return productRepository.findQna(pid);
+    public Product findByPid(int pid) {
+        return productRepository.findByPid(pid);
     }
 
     @Override
-    public ProductReturn findReturn(){
-        return productRepository.findReturn();
+    public List<Product> findAll() {
+        List<Product> list = productRepository.findAll();
+        return list;
     }
 }
-
-

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {getQna} from "../../feature/product/productAPI.js";
+import { getQna } from '../../feature/product/productAPI.js';
 
 export function QnA({pid}) {
     const [qnaData, setQnaData] = useState([]);
@@ -7,13 +7,13 @@ export function QnA({pid}) {
     const [isOpen, setIsOpen] = useState(true);
 
     useEffect(()=> {
-        const fetch = async() => {
+        const fetch = async(pid) => {
             const jsonData = await getQna(pid);
             setQnaData(jsonData);
         }
         fetch(pid);
     }, []);
-    // console.log(qnaData);
+
    const handleToggle = (qid) => {
         setOpenQid(prev => (prev === qid) ? null : qid);
    }
@@ -41,10 +41,10 @@ export function QnA({pid}) {
             </div>
             <table className='review-list-content'>
                 <tbody>
-                    {qnaData && qnaData.map(item => 
+                    {qnaData && qnaData.map(item =>
                         <tr>
                             <td style={{width:"10%"}}>
-                                {item.isComplete ? <span>답변완료</span> 
+                                {item.isComplete ? <span>답변완료</span>
                                                  : <span>답변준비중</span> }
                             </td>
                             <td style={{width:"60%"}} >
@@ -57,7 +57,7 @@ export function QnA({pid}) {
                             <td>{item.cdate}</td>
                         </tr>
                     )}
-                    
+
                     <tr>
                         <td colSpan={4}>{"<< "} 1 2 3 4 5 {" >>"}</td>
                     </tr>

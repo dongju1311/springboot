@@ -5,7 +5,7 @@ const initialState = {
   productList: [],  //출력용 - 2차원 배열
   products: [],  //원본 - 1차원 배열
   product: {},
-  imgList:[]
+  imgList: []
 }
 
 export const productSlice = createSlice({
@@ -28,7 +28,7 @@ export const productSlice = createSlice({
         // state.product = filterProduct;
 
         //2. products 1차원 배열에서 find 함수
-        // state.product = state.products.find(item => item.pid === pid);
+//        state.product = state.products.find(item => item.pid === pid);
     }
   },
 })

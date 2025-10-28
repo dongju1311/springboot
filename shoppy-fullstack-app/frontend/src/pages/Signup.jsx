@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { validateSignupFormCheck } from '../utils/validate.js';
 import { initForm } from '../utils/init.js';
 import { axiosPost } from '../utils/dataFetch.js';
@@ -39,13 +39,13 @@ export function Signup() {
         e.preventDefault();
         const param = {  refs: refs,   setErrors: setErrors }
         const formData = { ...form, email: form.emailName.concat('@', form.emailDomain) }
-
         const result = await dispatch(getSignup(formData, param));
+//         console.log('result------>> ', result);
         if(result) {
             alert("회원가입 성공!!");
             navigate("/login");
-        } else alert("회원가입 실패!!");
-    }
+        }    else alert("회원가입 실패!!");
+    }//handleSubmit
 
     /** 아이디 중복체크 */
     const handleDupulicateIdCheck = async() => {

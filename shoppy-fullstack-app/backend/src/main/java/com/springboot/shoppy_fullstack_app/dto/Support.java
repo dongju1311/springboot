@@ -11,3 +11,4 @@ public class Support {
     private int hits;
     private String rdate;
 }
+

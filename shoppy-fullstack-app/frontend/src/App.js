@@ -12,6 +12,7 @@ import { CartProvider } from './context/CartContext.js';
 import { AuthProvider } from './context/AuthContext.js';
 import { ProductProvider } from './context/ProductContext.js';
 import { ProectedPageRoute } from './pages/ProectedPageRoute.js';
+import { PayResult } from './pages/PayResult.jsx';
 
 import './styles/cgvSignup.css';
 import './styles/cgv.css';
@@ -39,6 +40,7 @@ export default function App() {
                  element={  <ProectedPageRoute>
                                 <CheckoutInfo />
                             </ProectedPageRoute>  } />
+          <Route path="/payResult" element={<PayResult />} />
                 
           <Route path="/support" element={
             <ProectedPageRoute>

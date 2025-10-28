@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { SearchForm } from '../components/commons/SearchForm.jsx';
 import { MenuList } from '../components/commons/MenuList.jsx';
 import { axiosData } from '../utils/dataFetch.js';
-import {getList} from "../feature/support/supportAPI.js";
+import { getList } from '../feature/support/supportAPI.js';
 
 export function Support() {
     const [menus, setMenus] = useState([]);
@@ -11,7 +11,7 @@ export function Support() {
 
     useEffect(()=>{
         const fetch = async() => {
-            const jsonData = await axiosData("/data/support.json");
+            const jsonData = await axiosData("/data/support.json"); //카테고리 가져오기
             const list = await getList('all');
             setMenus(jsonData.menus);
             setCategory(jsonData.category);
@@ -21,7 +21,6 @@ export function Support() {
     }, []);
 
     const filterList = async(stype) => {
-        console.log(stype);
         const list = await getList(stype);
         setList(list);
     }    

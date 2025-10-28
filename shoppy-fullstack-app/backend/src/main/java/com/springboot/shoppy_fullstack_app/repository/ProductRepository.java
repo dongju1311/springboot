@@ -8,13 +8,9 @@ import com.springboot.shoppy_fullstack_app.dto.ProductReturn;
 import java.util.List;
 
 public interface ProductRepository {
-    List<Product> findAll();
-
-    Product findByPid(int pid);
-
-    ProductDetailinfo findProductDetailinfo(int pid);
-
-    List<ProductQna> findQna(int pid);
-
     ProductReturn findReturn();
+    List<ProductQna> findQna(int pid);
+    ProductDetailinfo findProductDetailinfo(int pid);
+    Product findByPid(int pid);
+    List<Product> findAll();
 }
