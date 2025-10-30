@@ -18,7 +18,7 @@ public class JdbcTemplateMemberRepository  implements  MemberRepository{
 
     @Override
     public String login(String id) {
-        String sql = "select pwd from member where id = ?";
+        String sql = "select ifnull(Max(pwd),null) as pwd from member where id = ?";
         String encodePwd = jdbcTemplate.queryForObject(sql, String.class, id);
         return encodePwd;
 

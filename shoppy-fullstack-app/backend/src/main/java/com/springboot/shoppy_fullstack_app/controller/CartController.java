@@ -5,7 +5,10 @@ import com.springboot.shoppy_fullstack_app.dto.CartListResponse;
 import com.springboot.shoppy_fullstack_app.dto.KakaoPay;
 import com.springboot.shoppy_fullstack_app.service.CartService;
 import com.springboot.shoppy_fullstack_app.service.KakaoPayService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,8 +32,18 @@ public class CartController {
     }
 
     @PostMapping("/list")
-    public List<CartListResponse> findList(@RequestBody CartItem cartItem) {
-        return cartService.findList(cartItem);
+    public ResponseEntity<?> findList(@RequestBody CartItem cartItem, HttpServletRequest request) {
+        HttpSession session = request.getSession(false); //기존 생성 세션 가져오기
+        String sid = (String) session.getAttribute("sid");
+        String ssid = session.getId();
+        ResponseEntity<?> response = null;
+        if(ssid != null && sid != null){
+            List<CartListResponse> list =  cartService.findList(cartItem);
+            response = ResponseEntity.ok(list);
+        } else {
+            response = ResponseEntity.ok(Map.of("message", false));
+        }
+        return response;
     }
 
     @PostMapping("/count")
