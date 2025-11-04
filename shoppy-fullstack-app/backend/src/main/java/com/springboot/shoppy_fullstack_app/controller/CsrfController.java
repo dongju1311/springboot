@@ -19,7 +19,7 @@ public class CsrfController {
     }
     @GetMapping("/refresh") //프론트에서 로그아웃 발생시 토큰을 재발급
     public ResponseEntity<?> refresh(HttpServletRequest request){
-        request.changeSessionId();
+//        request.changeSessionId();
         CsrfToken token = (CsrfToken) request.getAttribute(CsrfToken.class.getName());
         return  ResponseEntity.ok(token);
     }

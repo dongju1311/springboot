@@ -32,18 +32,19 @@ public class CartController {
     }
 
     @PostMapping("/list")
-    public ResponseEntity<?> findList(@RequestBody CartItem cartItem, HttpServletRequest request) {
-        HttpSession session = request.getSession(false); //기존 생성 세션 가져오기
-        String sid = (String) session.getAttribute("sid");
-        String ssid = session.getId();
-        ResponseEntity<?> response = null;
-        if(ssid != null && sid != null){
-            List<CartListResponse> list =  cartService.findList(cartItem);
-            response = ResponseEntity.ok(list);
-        } else {
-            response = ResponseEntity.ok(Map.of("message", false));
-        }
-        return response;
+    public List<CartListResponse> findList(@RequestBody CartItem cartItem, HttpServletRequest request) {
+//        HttpSession session = request.getSession(false); //기존 생성 세션 가져오기
+//        String sid = (String) session.getAttribute("sid");
+//        String ssid = session.getId();
+//        ResponseEntity<?> response = null;
+//        if(ssid != null && sid != null){
+//            List<CartListResponse> list =  cartService.findList(cartItem);
+//            response = ResponseEntity.ok(list);
+//        } else {
+//            response = ResponseEntity.ok(Map.of("message", false));
+//        }
+//        return response;
+        return cartService.findList(cartItem);
     }
 
     @PostMapping("/count")
