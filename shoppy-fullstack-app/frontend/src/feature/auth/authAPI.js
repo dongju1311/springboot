@@ -37,7 +37,7 @@ export const getLogin = (formData, param) => async(dispatch) => {
         const result = await axiosPost(url, formData);
         console.log(result);
         if(result.login) {
-            refreshCsrToken();
+            await refreshCsrToken();
             dispatch(login({"userId":formData.id}));
 //            const count = await getCartCount(formData.id);
             dispatch(getCartCount(formData.id));
@@ -54,7 +54,7 @@ export const getLogout = () => async(dispatch) => {
     const url = "/member/logout";
     const result = await axiosPost(url,{});
     if(result){
-        refreshCsrToken();
+        await refreshCsrToken();
         dispatch(logout());
         dispatch(resetCartCount());
     }

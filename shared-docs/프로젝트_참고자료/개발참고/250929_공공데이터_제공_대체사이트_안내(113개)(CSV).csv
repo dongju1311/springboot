@@ -1,0 +1,114 @@
+﻿번호,유형,시스템명,URL,기관명
+1,개방전용포털,교통사고정보 개방시스템,taas.koroad.or.kr/api/,도로교통공단
+2,개방전용포털,국가교통정보센터,its.go.kr,국토교통부
+3,개방전용포털,기상자료개방포털,data.kma.go.kr,기상청
+4,개방전용포털,농식품 공공데이터포털,data.mafra.go.kr,농림축산식품부
+5,개방전용포털,국가서지LOD,lod.nl.go.kr,국립중앙도서관
+6,개방전용포털,문화데이터 광장,culture.go.kr/data,한국문화정보원
+7,개방전용포털,TourAPI,api.visitkorea.or.kr,한국관광공사
+8,개방전용포털,전력데이터개방포털,bigdata.kepco.co.kr,한국전력공사
+9,개방전용포털,SGIS오픈플랫폼,sgis.kostat.go.kr/developer,통계청
+10,개방전용포털,특허정보활용서비스,plus.kipris.or.kr,특허청
+11,개방전용포털,고속도로 공공데이터 포탈,data.ex.co.kr,한국도로공사
+12,개방전용포털,바다누리 해양정보 서비스,khoa.go.kr/oceangrid,국립해양조사원
+13,개방전용포털,지방행정 인허가 데이터 개방,localdata.go.kr,행정안전부
+14,개방전용포털,K-Water 공공데이터개방포털,opendata.kwater.or.kr,한국수자원공사
+15,개방전용포털,영문법령 공동활용서비스,openlaw.klri.re.kr,한국법제연구원
+16,개방전용포털,서울열린데이터광장,data.seoul.go.kr,서울특별시
+17,개방전용포털,부산 공공데이터 포털,data.busan.go.kr,부산광역시
+18,개방전용포털,경기데이터드림,data.gg.go.kr,경기도
+19,개방전용포털,국방 공공데이터포털,data.mnd.go.kr,국방부
+20,개방전용포털,식의약 데이터 포털,data.mfds.go.kr,식품의약품안전처
+21,개방전용포털,OpenDART,opendart.fss.or.kr,금융감독원
+22,개방전용포털,나이스 교육정보 개방포털,open.neis.go.kr,한국교육학술정보원
+23,개방전용포털,개방海-국가해양정보활용센터,khoa.go.kr/oceanmap,국립해양조사원
+24,개방전용포털,영화관입장권 통합전산망 오픈 API,kobis.or.kr/kobisopenapi,영화진흥위원회
+25,개방전용포털,산림과학 지식정보서비스,know.nifos.go.kr,국립산림과학원
+26,개방전용포털,열린국회정보오픈API,open.assembly.go.kr,국회사무처
+27,개방전용포털,인천 스마트관광도시 OPEN API,api.incheoneasy.com,인천관광공사
+28,개방전용포털,공간정보오픈플랫폼 브이월드,vworld.kr,공간정보산업진흥원
+29,데이터분석플랫폼,보건의료 빅데이터개방시스템,opendata.hira.or.kr,건강보험심사평가원
+30,데이터분석플랫폼,울산광역시 데이터포털,data.ulsan.go.kr,울산광역시
+31,데이터분석플랫폼,국토교통 데이터 통합채널,data.molit.go.kr,국토교통부
+32,데이터분석플랫폼,경상남도 빅데이터 허브 포털,bigdata.gyeongnam.go.kr,경상남도
+33,데이터분석플랫폼,D-데이터허브,data.daegu.go.kr,대구광역시
+34,데이터분석플랫폼,서구 데이터 포털,seogu.go.kr/bigdata,대전광역시 서구
+35,데이터분석플랫폼,연제구 데이터포털,yeonje.go.kr/opendata,부산광역시 연제구
+36,데이터분석플랫폼,인천데이터포털,data.incheon.go.kr,인천광역시
+37,데이터분석플랫폼,빅데이터허브포털,data.jeonnam.go.kr/index.do,전라남도
+38,데이터분석플랫폼,전북빅데이터허브,bigdatahub.go.kr,전라북도
+39,데이터분석플랫폼,제주관광빅데이터플랫폼,https://data.ijto.or.kr/,제주관광공사
+40,데이터분석플랫폼,제주데이터허브,jejudatahub.net,제주테크노파크
+41,데이터분석플랫폼,창원시 데이터 포털,bigdata.changwon.go.kr,창원시
+42,데이터분석플랫폼,충청북도 빅데이터 허브 플랫폼,data.chungbuk.go.kr/index.do,충청북도
+43,데이터분석플랫폼,소방안전 빅데이터 플랫폼,bigdata-119.kr,소방청
+44,데이터분석플랫폼,헬스케어 빅데이터 플랫폼,bigdata-cancer.kr,국립암센터
+45,데이터분석플랫폼,문화 빅데이터 플랫폼,bigdata-culture.kr,한국문화정보원
+46,데이터분석플랫폼,디지털산업혁신 빅데이터 플랫폼,bigdata-dx.kr,한국산업기술시험원
+47,데이터분석플랫폼,환경 빅데이터 플랫폼,bigdata-environment.kr,한국수자원공사
+48,데이터분석플랫폼,산림 빅데이터 거래소,bigdata-forest.kr/,한국임업진흥원
+49,데이터분석플랫폼,스마트치안 빅데이터 플랫폼,bigdata-policing.kr,경찰대학
+50,데이터분석플랫폼,해양수산 빅데이터 거래소,bigdata-sea.kr/,한국해양수산개발원
+51,데이터분석플랫폼,국가교통데이터오픈마켓,bigdata-transportation.kr,한국교통연구원
+52,데이터분석플랫폼,농식품 빅데이터 거래소,kadx.co.kr,한국농수산식품유통공사
+53,데이터분석플랫폼,연안 빅데이터 플랫폼,bigdata-coast.kr,한국해양과학기술원
+54,데이터분석플랫폼,금융 빅데이터 플랫폼,bigdata-finance.kr,비씨카드
+55,데이터분석플랫폼,공간융합 빅데이터 플랫폼,bigdata-geo.kr,한국국토정보공사
+56,데이터분석플랫폼,라이프로그 빅데이터 플랫폼,bigdata-lifelog.kr/portal,원주연세의료원
+57,데이터분석플랫폼,부동산 빅데이터 플랫폼,https://www.bigdata-realestate.kr/#section-home,한국부동산원
+58,데이터분석플랫폼,중소·중견기업 빅데이터 플랫폼,bigdata-sme.kr,더존비즈온
+59,데이터분석플랫폼,통신 빅데이터 플랫폼,https://bdp.kt.co.kr/invoke/SOKBP0000/,케이티(KT)
+60,데이터분석플랫폼,KDX한국데이터거래소,kdx.kr/main,매일방송(MBN)
+61,데이터분석플랫폼,스마트팜 빅데이터 플랫폼,www.n-farm.kr/home/,네이버클라우드
+62,정보공개포털,참가격,price.go.kr,한국소비자원
+63,정보공개포털,교육통계서비스,kess.kedi.re.kr/index,교육부
+64,정보공개포털,대학알리미,academyinfo.go.kr,교육부
+65,정보공개포털,대학재정알리미,uniarlimi.kasfo.or.kr,교육부
+66,정보공개포털,유치원 알리미,e-childschoolinfo.moe.go.kr,교육부
+67,정보공개포털,지방교육재정알리미,eduinfo.go.kr,교육부
+68,정보공개포털,학교알리미,schoolinfo.go.kr,교육부
+69,정보공개포털,ICT통계포털,itstat.go.kr,정보통신정책연구원
+70,정보공개포털,미디어통계포털,stat.kisdi.re.kr,정보통신정책연구원
+71,정보공개포털,성인지통계,gsis.kwdi.re.kr,한국여성정책연구원
+72,정보공개포털,국세통계포털,tasis.nts.go.kr,국세청
+73,정보공개포털,재정정보공개시스템열린재정,openfiscaldata.go.kr,재정정보원
+74,정보공개포털,OAK 국가리포지터리,oak.go.kr,국립중앙도서관
+75,정보공개포털,문화셈터,stat.mcst.go.kr,한국문화관광연구원
+76,정보공개포털,방송통계포털,mediastat.or.kr,방송통신위원회
+77,정보공개포털,보건산업통계포털,khiss.go.kr,한국보건산업진흥원
+78,정보공개포털,어린이집정보공개포털,info.childcare.go.kr,한국사회보장정보원
+79,정보공개포털,보건복지데이터포털,data.kihasa.re.kr,한국보건사회연구원
+80,정보공개포털,오피넷,https://www.opinet.co.kr/user/main/mainView.do,한국석유공사
+81,정보공개포털,페트로넷,https://www.petronet.co.kr/v4/main.jsp,한국석유공사
+82,정보공개포털,전력통계정보시스템,epsis.kpx.or.kr,한국전력거래소
+83,정보공개포털,마이크로데이터 통합서비스,mdis.kostat.go.kr,통계청
+84,정보공개포털,해양수산 R&D 지식정보시스템,ofris.kimst.re.kr,해양수산과학기술진흥원
+85,정보공개포털,주소정보관리시스템,juso.go.kr,행정안전부
+86,정보공개포털,태양관측데이터센터,sdo.kasi.re.kr,한국천문연구원
+87,정보공개포털,생활안전지도,safemap.go.kr,행정안전부
+88,정보공개포털,주택금융통계시스템,houstat.hf.go.kr,한국주택금융공사
+89,정보공개포털,K-MBS 유동화증권 통합공시포털,kmbs.hf.go.kr,한국주택금융공사
+90,정보공개포털,한국어 학습자 말뭉치 나눔터,kcorpus.korean.go.kr,국립국어원
+91,정보공개포털,EcoBank(생태공간정보),nie-ecobank.kr,국립생태원
+92,정보공개포털,환경정보공개시스템,air.incheon.go.kr,인천광역시
+93,정보공개포털,무역투자빅데이터,kotra.or.kr/bigdata,대한무역투자진흥공사
+94,정보공개포털,국토정보 플랫폼,map.ngii.go.kr,국토교통부
+95,정보공개포털,천문우주지식정보,astro.kasi.re.kr,한국천문연구원
+96,정보공개포털,NCDC-국가암데이터센터포털,cancerdata.re.kr,국립암센터
+97,정보공개포털,건강보험자료공유시스템,nhiss.nhis.or.kr,국민건강보험공단
+98,정보공개포털,양양군 스마트 관광 데이터 플랫폼,data.yangyang.go.kr,강원특별자치도 양양군
+99,정보공개포털,국토안전 빅데이터 개방 포털,bigtori.kalis.or.kr,국토안전관리원
+100,정보공개포털,식품안전나라,foodsafetykorea.go.kr/apiMain.do,식품의약품안전처
+101,정보공개포털,기후서비스 플랫폼,cliks.apcc21.org,APEC기후센터
+102,정보공개포털,의약품안전나라 포털,nedrug.mfds.go.kr,식품의약품안전처
+103,정보공개포털,비즈패스파인더,bigdata.kosmes.or.kr,중소벤처기업진흥공단
+104,개방전용포털,푸드QR 실시간식품정보확인서비스,portal.foodqr.kr/dvlpr/mainView.do,식품안전정보원
+105,개방전용포털,울산항 공공데이터 포털,upa.or.kr/data,울산광역시
+106,개방전용포털,충청남도 데이터포털 올담,alldam.chungnam.go.kr/,충청남도
+107,데이터분석플랫폼,광주광역시 빅데이터 통합플랫폼,bigdata.gwangju.go.kr,광주광역시
+108,데이터분석플랫폼,세종특별자치시 빅데이터 개방형 플랫폼,sejong.go.kr/bigdata/,세종특별자치시
+109,개방전용포털,전주시 데이터 포털,jeonju.go.kr/data/main/main.do,전북특별자치도 전주시
+110,개방전용포털,거제시 데이터포털,data.geoje.go.kr/index.geoje,경상남도 거제시
+111,개방전용포털,수원시 데이터 포털,data.suwon.go.kr/portal/main/,경기도 수원시
+112,데이터분석플랫폼,부천시 빅데이터 포털,insight.bucheon.go.kr,경기도 부천시
+113,데이터분석플랫폼,용산구 빅데이터 플랫폼,bigdata.yongsan.go.kr/usr/index.do,서울특별시 용산구
