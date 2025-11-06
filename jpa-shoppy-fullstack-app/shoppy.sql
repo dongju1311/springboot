@@ -1,26 +1,26 @@
 use shoppy;
 select database();
 show tables;
-select * from memberDto;
-desc memberDto;
+select * from member;
+desc member;
 
 -- pwd 사이즈 변경
-alter table memberDto modify column pwd varchar(100) not null;
-desc memberDto;
+alter table member modify column pwd varchar(100) not null;
+desc member;
 
 -- mysql은 수정, 삭제 시 update mode를 변경
 SET SQL_SAFE_UPDATES = 0;
 
-delete from memberDto
+delete from member 
 where mdate = '2025-10-17';
 
-delete from memberDto
+delete from member
 where id = 'test222';
 
-select pwd from memberDto where id='hong';
-select count(*) as pwd from memberDto where id = 'hong';
+select pwd from member where id='hong';
+select count(*) as pwd from member where id = 'hong';
 
-select * from memberDto;
+select * from member;
 
 /***********************************
 	상품 테이블 생성 : product
@@ -184,14 +184,14 @@ select did, title_en as titleEn, title_ko as titleKo, pid, list
 	from product_detailinfo
     where pid = 1;
 
-select * from memberDto;
+select * from member;
 select now() from dual;
 
 /**********************************************
 	상품 QnA 테이블 생성 : product_qna
 **********************************************/
 show tables;
-desc memberDto;
+desc member;
 create table product_qna (
 	qid			int				auto_increment		primary key,
     title		varchar(100) 	not null,
@@ -203,7 +203,7 @@ create table product_qna (
     cdate		datetime,
     constraint fk_product_qna_pid	foreign key(pid)  references product(pid)
 		on delete cascade   on update cascade,
-	constraint fk_member_id	foreign key(id)  references memberDto(id)
+	constraint fk_member_id	foreign key(id)  references member(id)
 		on delete cascade   on update cascade
 );
 desc product_qna;
@@ -242,7 +242,7 @@ FROM JSON_TABLE(
 ) AS jt;
 
 select * from product_qna;
-select * from memberDto;
+select * from member;
 
 -- hong 회원이 분홍색 후드티(pid:1) 상품에 쓴 QnA 조회
 -- 회원아이디(id), 회원명(name), 가입날짜(mdate), 상품명(name), 상품가격(price), 
@@ -257,7 +257,7 @@ select
     pq.title,
     pq.content,
     pq.cdate
-from memberDto m, product p, product_qna pq
+from member m, product p, product_qna pq
 where m.id = pq.id and p.pid = pq.pid
 	and m.id = 'hong' and p.pid = 1;
     
@@ -313,7 +313,7 @@ create table cart(
     cdate		datetime 	not null,
     constraint fk_cart_pid	foreign key(pid) references product(pid) 
 	on delete cascade		on update cascade,
-	constraint fk_cart_id	foreign key(id) references memberDto(id)
+	constraint fk_cart_id	foreign key(id) references member(id) 
 	on delete cascade		on update cascade        
 );
 
@@ -427,7 +427,7 @@ SELECT
                             from cart c
                             inner join product p on c.pid = p.pid
                             where c.id = 'test') as totalPrice
-                   from memberDto m, product p, cart c
+                   from member m, product p, cart c
                    where m.id = c.id
                     and p.pid = c.pid
                     and m.id = 'test' ;
@@ -452,7 +452,7 @@ select  m.id,
 	   c.qty,
 	   c.cid,
        t.totalPrice
-   from memberDto m, product p, cart c,
+   from member m, product p, cart c,
           (select c.id, sum(c.qty * p.price) as totalPrice
 			from cart c
 			inner join product p on c.pid = p.pid
@@ -540,8 +540,8 @@ select sid, title, stype, hits, rdate from support;
 **********************************************************************/
 use shoppy;
 select database();
-select * from memberDto;
-desc memberDto;
+select * from member;
+desc member;
 drop table orders;
 create table orders (
   oid         		int 			auto_increment	primary key,
@@ -562,7 +562,7 @@ create table orders (
   memo             	varchar(255),
   odate				datetime,
   
-  constraint fk_orders_member foreign key(member_id)	references memberDto(id)
+  constraint fk_orders_member foreign key(member_id)	references member(id)
 		on delete cascade	on update cascade
 );
 
@@ -592,7 +592,7 @@ create table order_detail (
 show tables;
 desc order_detail;
 
-
+select * from member;
 
 
     

@@ -14,3 +14,9 @@ kakao:
     cid: TC0ONETIME                   #가맹점 코드 (테스트용), 코드작성 ❌
     ready-path: /payment/ready        #카카오페이 호출 주소, 코드작성 ❌
     approve-path: /payment/approve    #카카오페이 인증 주소, 코드작성 ❌
+
+#spring:
+#  jpa:
+#    hibernate:
+#      naming:
+#        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl

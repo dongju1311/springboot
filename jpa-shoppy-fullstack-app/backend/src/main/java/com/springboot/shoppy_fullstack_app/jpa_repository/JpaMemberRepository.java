@@ -17,7 +17,7 @@ public interface JpaMemberRepository extends JpaRepository<Member,String> {
 //    Member save(Member member);
       //새로운 메소드 정의 - 1. 네이밍 규칙 적용, 2. @Query 적용 : SQL 직접 생성
 //    @Query("select count(m) from Member m where m.id = :id")
-      Long countById(String id); //네이미 규칙 적용
+      Long countById(String id); //네이밍 규칙 적용
 
       //로그인 - 엔티티가 아닌 다른 객체로 결과를 출력하는 경우 new 패키지 풀주소 출력 객체명
     @Query("select new com.springboot.shoppy_fullstack_app.dto.MemberDto(m.id, m.pwd) " +
