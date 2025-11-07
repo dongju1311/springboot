@@ -593,10 +593,11 @@ show tables;
 desc order_detail;
 
 select * from member;
-
-
+use shoppy;
+desc order_detail;
     
-    
+desc product_return;
+alter table product change imgList img_list JSon;
     
 
 

@@ -1,50 +1,75 @@
 package com.springboot.shoppy_fullstack_app.service;
 
-import com.springboot.shoppy_fullstack_app.dto.CartItem;
-import com.springboot.shoppy_fullstack_app.dto.CartListResponse;
+import com.springboot.shoppy_fullstack_app.dto.CartCheckQtyDto;
+import com.springboot.shoppy_fullstack_app.dto.CartItemDto;
+import com.springboot.shoppy_fullstack_app.dto.CartListResponseDto;
+import com.springboot.shoppy_fullstack_app.entity.CartItem;
+import com.springboot.shoppy_fullstack_app.jpa_repository.JpaCartRepository;
 import com.springboot.shoppy_fullstack_app.repository.CartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional //JPA에서 update/delete 작업시 명시적으로 정의 필수!
 public class CartServiceImpl implements CartService{
-    private CartRepository cartRepository;
+    private final CartRepository cartRepository;
+    private final JpaCartRepository jpaCartRepository;
 
     @Autowired
-    public CartServiceImpl(CartRepository cartRepository) {
+    public CartServiceImpl(CartRepository cartRepository, JpaCartRepository jpaCartRepository) {
         this.cartRepository = cartRepository;
+        this.jpaCartRepository = jpaCartRepository;
     }
 
     @Override
-    public int deleteItem(CartItem cartItem) {
-        return cartRepository.deleteItem(cartItem);
+    public int deleteItem(CartItemDto cartItem) {
+        return jpaCartRepository.deleteItem(cartItem.getCid());
     }
 
     @Override
-    public List<CartListResponse> findList(CartItem cartItem) {
-        return cartRepository.findList(cartItem);
+    public List<CartListResponseDto> findList(CartItemDto cartItemDto) {
+        return jpaCartRepository.findByUsername(cartItemDto.getId());
     }
 
     @Override
-    public CartItem getCount(CartItem cartItem) {
-        return cartRepository.getCount(cartItem);
+    public CartItemDto getCount(CartItemDto cartItem) {
+        int count = jpaCartRepository.countById(cartItem.getId());
+        cartItem.setSumQty(count);
+        return cartItem;
     }
 
     @Override
-    public int updateQty(CartItem cartItem) {
-        return cartRepository.updateQty(cartItem);
+    public int updateQty(CartItemDto cartItemDto) {
+        int result = 0;
+        if(cartItemDto.getType().equals("+")){
+            result = jpaCartRepository.increaseQty(cartItemDto.getCid());
+        } else {
+            result = jpaCartRepository.decreaseQty(cartItemDto.getCid());
+        }
+        return result;
     }
 
     @Override
-    public CartItem checkQty(CartItem cartItem) {
-        System.out.println("CartServiceImple :: " + cartItem.getPid() + cartItem.getSize() + cartItem.getId());
-        return cartRepository.checkQty(cartItem);
+    public CartItemDto checkQty(CartItemDto cartItemDto) {
+        int pid = cartItemDto.getPid();
+        String size = cartItemDto.getSize();
+        String id = cartItemDto.getId();
+        CartCheckQtyDto qtyDto = jpaCartRepository.checkQty(pid,size,id);
+        if(qtyDto != null){
+        cartItemDto.setCid(qtyDto.getCid());
+        cartItemDto.setCheckQty(qtyDto.getCount());
+        } else cartItemDto.setCheckQty(0L);
+        return cartItemDto;
     }
 
     @Override
-    public int add(CartItem cartItem) {
-        return cartRepository.add(cartItem);
+    public int add(CartItemDto cartItemDto) {
+        int result = 0;
+        CartItem entity = jpaCartRepository.save(new CartItem(cartItemDto));
+        if(entity != null) result = 1;
+        return result;
     }
 }
