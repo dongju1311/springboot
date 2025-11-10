@@ -1,9 +1,9 @@
 package com.springboot.shoppy_fullstack_app.repository;
 
-import com.springboot.shoppy_fullstack_app.dto.Support;
+import com.springboot.shoppy_fullstack_app.dto.SupportDto;
 import java.util.List;
 
 public interface SupportRepository {
-    List<Support> findAll();
-    List<Support> findAll(Support support);
+    List<SupportDto> findAll();
+    List<SupportDto> findAll(SupportDto support);
 }

@@ -1,6 +1,6 @@
 package com.springboot.shoppy_fullstack_app.repository;
 
-import com.springboot.shoppy_fullstack_app.dto.KakaoPay;
+import com.springboot.shoppy_fullstack_app.dto.KakaoPayDto;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -21,7 +21,7 @@ public class JdbcTemplateOrderRepository implements OrderRepository{
     }
 
     @Override
-    public int saveOrders(KakaoPay kakaoPay){
+    public int saveOrders(KakaoPayDto kakaoPay){
         String sql = """
                     insert into orders(order_code, member_id, shipping_fee, discount_amount, total_amount,
                     					receiver_name, receiver_phone, zipcode, address1, address2, memo, odate)
@@ -43,7 +43,7 @@ public class JdbcTemplateOrderRepository implements OrderRepository{
         return jdbcTemplate.update(sql,params);
     }
     @Override
-    public int saveOrderDetail(KakaoPay kakaoPay){
+    public int saveOrderDetail(KakaoPayDto kakaoPay){
         String sql = """
                 insert into
                     order_detail(order_code,pid,pname,size,qty,pid_total_price,discount)

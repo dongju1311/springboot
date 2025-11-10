@@ -19,9 +19,9 @@ public interface JpaCartRepository extends JpaRepository<CartItem, Integer> {
     int deleteItem(@Param("cid")int cid);
 
     //장바구니 아이템 카운트 - Native Query 방식
-    @Query(value = """
-                select ifnull(sum(qty), 0) as sumQty from cart where id = :id
-            """, nativeQuery = true)
+    @Query("""
+                select ifnull(sum(c.qty), 0) as sumQty from CartItem c where c.id = :id
+            """)
     int countById(@Param("id") String id);
 
 
@@ -55,4 +55,8 @@ public interface JpaCartRepository extends JpaRepository<CartItem, Integer> {
     //장바구니 상품 추가
     CartItem save(CartItem cartItem);
 
+    //step3: 주문/결제 - 장바구니(Cart) 아이템 삭제
+    @Modifying
+    @Query("delete from CartItem c where c.cid in (:cidList)")
+    int deleteItemList(@Param("cidList") List<Integer> cidList);
 }
