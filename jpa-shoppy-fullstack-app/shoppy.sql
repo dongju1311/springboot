@@ -316,12 +316,15 @@ create table cart(
 	constraint fk_cart_id	foreign key(id) references member(id) 
 	on delete cascade		on update cascade        
 );
-
+use shoppy;
 show tables;
 desc cart;
 
 select now() from dual;
-select * from cart;
+select * from view_cartlist;
+desc view_cartlist;
+select * from information_schema.views
+where table_name='view_cartlist';
 
 -- mysql은 수정, 삭제 시 update mode를 변경
 SET SQL_SAFE_UPDATES = 0;
@@ -437,6 +440,9 @@ select * from cart;
 /*********************************************************************
 	장바구니 리스트 VIEW  생성 : view_cartlist
 **********************************************************************/
+drop view view_cartlist;
+select * from information_schema.views where table_name = 'view_cartlist';
+select * from view_cartlist;
 create view view_cartlist
 as
 select  m.id,
@@ -451,9 +457,9 @@ select  m.id,
 	   c.size,
 	   c.qty,
 	   c.cid,
-       t.totalPrice
+       t.total_price
    from member m, product p, cart c,
-          (select c.id, sum(c.qty * p.price) as totalPrice
+          (select c.id, sum(c.qty * p.price) as total_price
 			from cart c
 			inner join product p on c.pid = p.pid
 			group by c.id) as t
@@ -599,8 +605,12 @@ desc order_detail;
 desc product_return;
 alter table product change imgList img_list JSon;
     
+delete from orders;
+delete from cart;
 
+select * from orders;
+select * from order_detail;
+select * from cart;
+select * from view_cartList;
 
-
-
-
+desc support;
