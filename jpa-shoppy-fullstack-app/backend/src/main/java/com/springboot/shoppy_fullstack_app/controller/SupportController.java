@@ -19,13 +19,13 @@ public class SupportController {
         this.supportService = supportService;
     }
 
+    @PostMapping("/search/list")
+    public PageResponseDto<SupportDto> searchList(@RequestBody SupportDto support) {
+        return supportService.findSearchAll(support);
+    }
+
     @PostMapping("/list")
     public PageResponseDto<SupportDto> list(@RequestBody SupportDto support) {
         return supportService.findAll(support);
-    }
-
-    @PostMapping("/search/list")
-    public PageResponseDto<SupportDto> searchList(@RequestBody SupportDto support){
-        return supportService.findSearchAll(support);
     }
 }
