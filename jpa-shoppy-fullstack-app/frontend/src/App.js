@@ -21,6 +21,7 @@ import './styles/cgvSignup.css';
 import './styles/cgv.css';
 import './styles/commons.css';
 import './styles/shoppy.css';
+import {ErrorPage} from "./pages/ErrorPage.jsx";
 
 export default function App() {
     //App이 최초로 호출되면 CSRF 토큰 발급
@@ -49,7 +50,6 @@ export default function App() {
                                 <CheckoutInfo />
                             </ProectedPageRoute>  } />
           <Route path="/payResult" element={<PayResult />} />
-                
           <Route path="/support" element={
             <ProectedPageRoute>
               <Support />
@@ -60,6 +60,7 @@ export default function App() {
                 <ShoppyAdmin />
             // </ProectedPageRoute>
         } />
+            <Route path="/error/:type" element={<ErrorPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

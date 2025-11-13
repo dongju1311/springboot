@@ -614,3 +614,12 @@ select * from cart;
 select * from view_cartList;
 
 desc support;
+
+set sql_safe_updates = 0;
+select * from member;
+
+-- role 컬럼 추가
+alter table member add role varchar(10);
+select * from member;
+update member set role = 'USER';
+update member set role = 'ADMIN' where id = 'shoppyadmin';
