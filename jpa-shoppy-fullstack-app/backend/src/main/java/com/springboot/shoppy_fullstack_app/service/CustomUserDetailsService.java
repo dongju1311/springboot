@@ -26,7 +26,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         //member가 null이 아니면 USER 객체 즉 회원으로 인증되어 SecurityContext에 저장됨
         User.UserBuilder b = User.withUsername(member.getId())
                 .password(member.getPwd())    // BCrypt로 저장되어 있어야 함
-                .roles("USER");                   // 필요 시 DB에서 권한 매핑
+                .roles(member.getRole());    // 필요 시 DB에서 권한 매핑 : 'ROLE_' 자동매핑
         return b.build();
     }
 }

@@ -1,4 +1,7 @@
+import {useEffect} from "react";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import {createCsrfToken} from "./feature/csrf/manageCsrfToken.js";
+import {ShoppyAdmin} from "./pages/ShoppyAdmin.jsx";
 import { Layout } from './pages/Layout.jsx';
 import { Products } from './pages/Products.jsx';
 import { Home } from './pages/Home.jsx';
@@ -18,11 +21,9 @@ import './styles/cgvSignup.css';
 import './styles/cgv.css';
 import './styles/commons.css';
 import './styles/shoppy.css';
-import {useEffect} from "react";
-import {createCsrfToken} from "./feature/csrf/manageCsrfToken.js";
 
 export default function App() {
-    //App이 최초로 호추로디면 CSRF 토큰 발급
+    //App이 최초로 호출되면 CSRF 토큰 발급
     useEffect(() => {
         createCsrfToken();
     }, []);
@@ -54,6 +55,11 @@ export default function App() {
               <Support />
             </ProectedPageRoute>
             } />
+        <Route path="/admin" element={
+            // <ProectedPageRoute>
+                <ShoppyAdmin />
+            // </ProectedPageRoute>
+        } />
         </Route>
       </Routes>
     </BrowserRouter>
