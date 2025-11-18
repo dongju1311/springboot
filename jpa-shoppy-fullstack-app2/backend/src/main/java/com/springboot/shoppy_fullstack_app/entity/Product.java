@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -26,4 +27,7 @@ public class Product {
     //Product(1) : (1..n) ProductQna 엔티티 정의
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<ProductQna> qna;
+    //Product(1) : (n)CartItem
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<CartItem> cartItemList = new ArrayList<>();
 }

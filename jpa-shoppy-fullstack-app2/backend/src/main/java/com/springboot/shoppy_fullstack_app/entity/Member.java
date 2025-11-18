@@ -1,14 +1,13 @@
 package com.springboot.shoppy_fullstack_app.entity;
 
 import com.springboot.shoppy_fullstack_app.dto.MemberDto;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "member")
@@ -24,6 +23,9 @@ public class Member {
     private String email;
     private LocalDate mdate;
     private String role;
+    // Member(1) : (n)CartItem
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<CartItem> cartItemList = new ArrayList<>();
     //Entity는 생성자를 반드시 정의해야함!!!
     public Member(){}
     public Member(MemberDto memberDto){

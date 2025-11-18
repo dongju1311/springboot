@@ -2,6 +2,7 @@ package com.springboot.shoppy_fullstack_app.service;
 
 import com.springboot.shoppy_fullstack_app.dto.KakaoPayDto;
 import com.springboot.shoppy_fullstack_app.entity.Order;
+import com.springboot.shoppy_fullstack_app.repository.CartRepository;
 import com.springboot.shoppy_fullstack_app.repository.JpaCartRepository;
 import com.springboot.shoppy_fullstack_app.repository.JpaOrderRepository;
 import com.springboot.shoppy_fullstack_app.repository2222.OrderRepository;
@@ -14,12 +15,12 @@ import org.springframework.transaction.annotation.Transactional;
 public class OrderServiceImpl implements OrderService{
     private final OrderRepository orderRepository;
     private final JpaOrderRepository jpaOrderRepository;
-    private final JpaCartRepository jpaCartRepository;
+    private final CartRepository cartRepository;
     @Autowired
-    public OrderServiceImpl(OrderRepository orderRepository, JpaOrderRepository jpaOrderRepository, JpaCartRepository jpaCartRepository){
+    public OrderServiceImpl(OrderRepository orderRepository, JpaOrderRepository jpaOrderRepository, CartRepository cartRepository){
         this.orderRepository = orderRepository;
         this.jpaOrderRepository = jpaOrderRepository;
-        this.jpaCartRepository = jpaCartRepository;
+        this.cartRepository = cartRepository;
     }
 
     @Override
@@ -34,9 +35,9 @@ public class OrderServiceImpl implements OrderService{
                 kakaoPayDto.getCidList());
         if(rows == 0) new Exception("step2 주문 상세 테이블 저장 실패!!");
         //step 3: Cart 테이블 아이템 삭제
-        int cartRows = jpaCartRepository.deleteItemList(kakaoPayDto.getCidList());
-        if(cartRows == 0) new Exception("step3 장바구니 아이템 삭제 실패!!");
-        if(entity != null && rows != 0 && cartRows != 0) result = 1;
+//        int cartRows = jpaCartRepository.deleteItemList(kakaoPayDto.getCidList());
+//        if(cartRows == 0) new Exception("step3 장바구니 아이템 삭제 실패!!");
+//        if(entity != null && rows != 0 && cartRows != 0) result = 1;
 
         return result;
     }
